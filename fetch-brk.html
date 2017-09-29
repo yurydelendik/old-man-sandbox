@@ -1,0 +1,11 @@
+<html>
+<head></head>
+<body>
+<script>
+  fetch(document.location).then(res => res.arrayBuffer()).then(buffer => {
+    console.log('test'); // break here
+  });
+
+  debugger;
+</script>
+</body></html>
