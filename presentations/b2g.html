@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Writing Web Apps for Firefox OS</title>
+
+		<meta name="author" content="Yury Delendik">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Writing Web Apps</br>(for Firefox OS)</h1>
+					<p>
+						<small>by <a href="mailto:ydelendik@mozilla.com">Yury Delendik</a> / <a href="http://twitter.com/yurydelendik">@yurydelendik</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Overview</h2>
+          <ul>
+            <li>Introduction</li>
+            <li>"Hello world" app</li>
+            <li>Diving in some APIs</li>
+            <li>Fun stuff?</li>
+          </ul>
+				</section>
+
+        <section>
+          <section>
+            <h2>Why Firefox OS is important?</h2>
+            <ul>
+              <li>New degree of openness</li>
+              <li>API discussed prior implementation</li>
+              <li>Specs are submitted to standards committee</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Do I need learn new stuff?</h2>
+            <ul>
+              <li>Most of developers are comfortable with HTML/JS</li>
+              <li>Most of designers are comfortable with HTML/CSS</li>
+              <li>Lots of productivity tools</li>
+            </ul>
+          </section>
+          <section>
+            <h2>"But JavaScript is slow"</h2>
+            <ul>
+              <li class="fragment">Well... "a bad workman always blames his tool"</li>
+              <li class="fragment">Performance of JavaScript was improved due to competition</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Firefox OS components</h2>
+          <ul>
+            <li>GONK - low level operating system (Linux/HAL)</li>
+            <li>GECKO - HTML5 stuff / Web Browser</li>
+            <li>GAIA - User Interface</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Discovery of the Apps</h2>
+          <ul>
+            <li>Marketplace(s)</li>
+            <li>Search / Everything.me</li>
+            <li>Internet</li>
+          </ul>
+        </section>
+
+				<section>
+					<section>
+						<h2>Hello world</h2>
+            <pre class="fragment"><code>&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width, user-scalable=no,
+                                      initial-scale=1, maximum-scale=1">
+    &lt;title>Hello OKC.js&lt;/title>
+  &lt;/head>
+  &lt;body>
+     &lt;p>Hello OKC.js!&lt;/p>
+  &lt;/body>
+&lt;/html></code></pre>
+					</section>
+					<section>
+						<h2>Offline Cache</h2>
+            <p>cache.manifest:</p>
+            <pre><code>CACHE MANIFEST
+index.html
+scripts/hello.js
+css/style.css</code></pre>
+						<p>manifest attribute:</p>
+            <pre><code>&lt;html manifest="cache.manifest">
+...</code></pre>
+					</section>
+					<section>
+						<h2>Hosted application - manifest</h2>
+            <pre><code>{
+  "name": "Hello OKC.js",
+  "description": "Hello world example",
+  "launch_path": "/hello.html",
+  "appcache_path": "/cache.manifest",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Yury Delendik"
+  }
+}</code></pre>
+            <p>Mime type for .webapp file must be<br> 'application/x-web-app-manifest+json'</p>
+					</section>
+					<section>
+						<h2>Hosted application - install</h2>
+            <pre><code>var manifestURL = "http://okcjs-demo/web-manifest.webapp";
+function install() {
+  var myapp = navigator.mozApps.install(manifestURL);
+  myapp.onsuccess = function () { alert('Installed'); };
+  myapp.onerror = function () { alert('Error: ' + myapp.error.name); };
+}</code></pre>
+					</section>
+					<section>
+						<h2>Packaged application - manifest</h2>
+            <pre><code>{
+  "name": "Hello OKC.js",
+  "description": "Hello world example",
+  "launch_path": "/hello.html",
+  "version": "1.0",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Yury Delendik"
+  }
+}</code></pre>
+            <p>All content files must be zipped including the manifest file.</p>
+					</section>
+					<section>
+						<h2>Packaged application -<br> mini-manifest</h2>
+            <pre><code>{
+  "name": "Hello OKC.js",
+  "package_path": "http://okcjs-demo/application.zip",
+  "version": "1.0",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Yury Delendik"
+  }
+}</code></pre>
+					</section>
+					<section>
+						<h2>Packaged application - install</h2>
+            <pre><code>var manifestURL = "http://okcjs-demo/web-manifest.webapp";
+function install() {
+  var myapp = navigator.mozApps.installPackage(manifestURL);
+  myapp.onsuccess = function () { alert('Installed'); };
+  myapp.onerror = function () { alert('Error: ' + myapp.error.name); };
+}</code></pre>
+					</section>
+					<section>
+						<h2>Privileged application</h2>
+            <pre><code>  ...
+  "type": "privileged",
+  "permissions": {
+    "tcp-socket": {
+      "description": "Required for IRC bot communication"
+    }
+  },
+  ...</code></pre>
+            <p>The package must be sent to the marketsplace and signed.</p>
+					</section>
+					</section>
+				</section>
+
+				<section>
+				  <section>
+					  <h2>Web APIs</h2>
+            <p>Couple of references:</p>
+					  <ul>
+              <li><a href="http://www.w3.org/2008/webapps/wiki/PubStatus">http://www.w3.org/2008/webapps/wiki/PubStatus</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/WebAPI">https://developer.mozilla.org/en-US/docs/WebAPI</a></li>
+             </ul>
+				  </section>
+          <section>
+					  <h2>Web Storage API - localStorage</h2>
+            <p>Storing the item:</p><pre><code>localStorage.setItem("key", "value");</code></pre>
+            <p>Retrieving the item:</p><pre><code>var value = localStorage.getItem("key");</code></pre>
+          </section>
+          <section>
+					  <h2>File API - input[type=file]</h2>
+            <p>Requesting the image:</p><pre><code>&lt;input id="image" type="file" accept="image/*"></code></pre>
+            <p>Getting the File:</p><pre><code>var file = document.getElementById('image').files[0];</code></pre>
+            <p>Represent it as URL:</p><pre><code>var url = URL.createObjectURL(file);</code></pre>
+            <p>Or Read to binary array:</p><pre><code>var reader = new FileReader();
+reader.onload = function () { reader.result; };
+reader.readAsArrayBuffer(file);</code></pre>
+          </section>
+          <section>
+					  <h2>DeviceOrientation Event <sup>*</sup></h2>
+            <p>Listening for changes:</p><pre><code>window.addEventListener("deviceorientation", orientationChanged);</code></pre>
+            <p>Retrieving rotation angles:</p><pre><code>function orientationChanged(evt) {
+  evt.alpha; // motion by z-axis
+  evt.beta; // motion by x-axis (front-to-background)
+  evt.gamma; // motion by y-axiz (left-to-right)
+}</code></pre>
+          </section>
+          <section>
+					  <h2>Vibration API <sup>*</sup></h2>
+            <p>Vibrate once:</p><pre><code>window.navigator.vibrate(100);</code></pre>
+            <p>Vibrate pattern:</p><pre><code>window.navigator.vibrate([
+  100,100,100,100,100,100,300,100,300,100,300,100,100,100,100,100,100]);</code></pre>
+          </section>
+          <section>
+					  <h2>Web Activities API <sup>+</sup></h2>
+            <p>Dial the number:</p><pre><code>var dial = new MozActivity({
+  name: "dial",
+  data: { number: "5551234" }
+});</code></pre>
+            <p>Requesting the image:</p><pre><code>var dial = new MozActivity({
+  name: "pick",
+  data: { type: ["image/png", "image/jpeg"] }
+});</code></pre>
+            <p><a href"https://developer.mozilla.org/en-US/docs/WebAPI/Web_Activities">https://developer.mozilla.org/en-US/docs/WebAPI/Web_Activities</a></p>
+          </section>
+          <section>
+					  <h2>Screen Orientation API</sup></h2>
+            <p>Query orientation:</p><pre><code>var orientation = window.screen.orientation;</code></pre>
+            <p>Listening for change:</p><pre><code>window.screen.addEventListener("orientationchange", changed);</code></pre>
+          </section>
+          <section>
+					  <h2>Page Visibility API <sup>*</sup></h2>
+            <p>Is page visible?:</p><pre><code>var isHidden = document.hidden;</code></pre>
+            <p>Listening for change:</p><pre><code>window.screen.addEventListener("visiblitychange", changed);</code></pre>
+          </section>
+				</section>
+
+				<section>
+					<h1>The Demos</h1>
+          <p><a href="http://github.com/yurydelendik/OKCJS_B2G">http://github.com/yurydelendik/OKCJS_B2G</a></p>
+				</section>
+
+				<section>
+					<h1>More Links</h1>
+          <ul>
+            <li><a href="https://hacks.mozilla.org/2012/11/firefox-os-video-presentations-and-slides-on-the-os-webapis-hacking-and-writing-apps/">Firefox OS Videos</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Apps">Designing Web Apps</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a></li>
+            <li><a href="https://marketplace.firefox.com/developers/">Marketplace Developer Hub</a></li>
+          </ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>by Yury Delendik</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

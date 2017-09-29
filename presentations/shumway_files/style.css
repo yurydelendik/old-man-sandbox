@@ -1,0 +1,24 @@
+img.withPadding {
+  padding: 6px;
+}
+
+html[lang='ru'] .reveal h1 {
+	font-size: 2.20em;
+ }
+html[lang='ru'] .reveal h2 {
+    font-size: 1.90em;
+}
+
+html[lang='ru'] .reveal h1,
+html[lang='ru'] .reveal h2,
+html[lang='ru'] .reveal h3,
+html[lang='ru'] .reveal h4,
+html[lang='ru'] .reveal h5 {
+	font-weight: bold;
+    font-family: "Arial Narrow", sans-serif !important;	
+}
+
+
+html[lang='ru'] .reveal .slides {
+	font-family: sans-serif !important;
+}

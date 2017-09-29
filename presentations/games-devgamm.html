@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Bring Video Games to the Web Today: Shumway and asm.js</title>
+
+    <meta name="description" content="Shumway">
+    <meta name="author" content="Yury Delendik">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="shumway_files/style.css">
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <section>
+            <h1 style="font-size: 1.5em">Видео игры в интернете<br> используя<br>
+            Shumway, asm.js and WebGL</h1>
+            <p>
+              <small><a href="mailto:ydelendik@mozilla.com">Юрий Делендик, Mozilla</a> / <a href="http://twitter.com/yurydelendik">@yurydelendik</a></small>
+            </p>
+            <p class="fragment"><small>
+				<a href="http://people.mozilla.org/~ydelendik/presentations/games-devgamm.html">http://people.mozilla.org/~ydelendik/presentations/games-devgamm.html</a> <br>
+				<a href="http://people.mozilla.org/~ydelendik/presentations/games.html">http://people.mozilla.org/~ydelendik/presentations/games.html (eng)</a>
+			</small></p>
+          </section>
+          <section>
+            <h2>Mozilla Research</h2>
+			<ul>
+				<li>Работаем над современными веб-технологиями.</li>
+				<li>Пытаемся доказать, что открытые технологии обладают потенциально теми же возможностями что и закрытые.</li>
+			</ul>
+          </section>
+        </section>
+
+        <section>
+          <h1>Shumway</h1>
+          <ul>
+             <li>Цель</li>
+             <li>SWF формат</li>
+             <li>Компоненты Shumway</li>
+             <li>Использование</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Цель</h2>
+          <ul>
+             <li>Определить части платформы HTML5, которые необходимо улучшить</li>
+             <li>Дать Flash разработчикам чувстваовать себя более комфортно с платформой, например предоставить библиотеки</li>
+             <li>Разработать скоростную VM на JavaScript</li>
+             <li>Создать поигрыватель SWF файлов используя HTML/JavaScript</li>
+             <li>Встроить проигрыватель в Firefox<br> (и другие броузеры?)</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>SWF формат</h2>
+            <ul>
+               <li>Двоичный формат</li>
+               <li>Данные часто упакованы используя DEFLATE</li>
+               <li>Содержит структуры, которые описывают временную последовательность, фигуры, звуки, и т.п.</li>
+               <li>AVM1 и AVM2 код храниться в собственных форматах</li>
+            </ul>
+            <img src="shumway_files/swf-tags.svg" class="withPadding" style="width: 75%">
+          </section>
+
+          <section>
+            <h2>Timeline</h2>
+            <img src="shumway_files/timeline.svg" style="width: 75%" class="withPadding">
+          </section>
+
+          <section>
+			<ul>
+              <li>ActionScript 1
+              <ul>
+                 <li>Основан на ECMAScript языке</li>
+              </ul></li>
+              <li>ActionScript 2
+              <ul>
+                 <li>Основан на <a href="http://www.ecmascript.org/es4/spec/overview.pdf">ECMAScript 4</a></li>
+                 <li>Как ActionScript 1, исполняется на AVM1</li>
+              </ul></li>
+              <li>ActionScript 3
+              <ul>
+                 <li>Исполняется на AVM2</li>
+                 <li>Большая библиотека классов</li>
+                 <li>Поддержка E4X</li>
+			 </ul></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Внутренности<br> Flash Player</h2>
+            <img src="shumway_files/flash-player.png" style="width: 75%">
+          </section>
+
+          <section>
+            <h2>Сравни c HTML5</h2>
+            <img src="shumway_files/html.png" style="width: 75%">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Компоненты</h2>
+            <ul>
+               <li>Ядро</li>
+               <li>AVM2</li>
+               <li>"Собственная" реализация Flash</li>
+               <li>AVM1</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Компоненты</h2>
+            <img src="shumway_files/components.svg" style="width: 75%" class="withPadding">
+          </section>
+
+          <section>
+            <h2>Компоненты: Ядро</h2>
+            <ul>
+               <li>Структурный анализ SWF
+                  <ul>
+                     <li>Используются Typed Arrays / DataView</li>
+                     <li>Конвертирование в Web Worker</li>
+                     <li>Синронизация используя Promises/A+</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Компоненты: Ядро</h2>
+            <ul>
+               <li>Изображение
+                  <ul>
+                     <li>CANVAS 2D (экспериментирем с WebGL)</li>
+                     <li>Отсечение и прорисовка только фигур в измененных регионах</li>
+                     <li>Дерево квадрантов для определения фигур в измененных регионах и позиции указателя</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Отсечение</h2>
+            <img src="shumway_files/clip1.svg"><br/>
+            <img src="shumway_files/clip2.svg">
+          </section>
+          <section>
+            <h2>Компоненты: AVM2</h2>
+            <ul>
+               <li>Структурный анализ машинного кода AVM2</li>
+               <li>Среда выполнения</li>
+               <li>Интерпретатор</li>
+               <li>Вывод типов (Verifier)</li>
+               <li>Компилятор в JavaScript</li>
+               <li>Собственная реализация методов в builtin</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Компоненты:<br> "Собственная"<br> реализация Flash</h2>
+            <ul>
+               <li>JavaScript код для реализации "native" методов из playerglobal</li>
+               <li>Используем Web APIs чтобы имитировать функции Flash, например:
+                  <ul>
+                     <li>Web Audio или AUDIO для звука</li>
+                     <li>VIDEO для видео</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Компоненты: AVM1</h2>
+            <ul>
+               <li>Структурный анализ машинного кода AVM1</li>
+               <li>Интерпретатор</li>
+               <li>Используем AS3 код, чтобы реализовать AS1/AS2 классы</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Дополнительныe<br> подпроекты</h2>
+            <ul>
+               <li>ECMAScript for XML (E4X)</li>
+               <li>RegExp</li>
+               <li>Action Message Format (AMF)</li>
+               <li>RTMP <a href="https://github.com/yurydelendik/rtmp.js">*</a></li>
+            </ul>
+          </section>
+		  <section>
+			  <h2>Производительность</h2>
+			  <img src="shumway_files/shumway_bench.png"  style="width: 75%" class="withPadding">
+		  </section>           
+        </section>
+
+        <section>
+          <section>
+            <h2>Использование</h2>
+            <ul>
+               <li>Как расширение к веб-броузеру</li>
+               <li>Добавлять на страницу как IFRAME</li>
+               <li>Продолжать писать код в ActionScript 3</li>
+               <li>Использовать FLA/SWF как ресурс, писать на JavaScript</li>
+               <li>Тестирование производительности</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Демострация<br> Shumway</h2>
+        </section>
+
+        <section>
+          <h1>ASM.js</h1>
+          <p>"Чрезвычайно оптимизируемое низкоуровневое подмножество JavaScript"</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Простая программа</h2>
+            <pre><code contenteditable>function DiagModule(stdlib) {
+  "use asm";
+
+  var sqrt = stdlib.Math.sqrt;
+
+  function square(x) {
+    x = +x;
+    return +(x*x);
+  }
+  function diag(x, y) {
+    x = +x;
+    y = +y;
+    return +sqrt(square(x) + square(y));
+  }
+  return { diag: diag };
+}</code></pre>         
+          </section>
+          <section>
+            <h2>Почему это быстрее?</h2>
+            <ul>
+              <li>Помогает JavaScript движку определять типы данных.</li>
+              <li>Не управляет памятью JavaScript.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Надо ли мне это<br> писать самому?</h2>
+            <pre><code contenteditable>function strlen(ptr) { // calculate length of C string
+  ptr = ptr|0;
+  var curr = 0;
+  curr = ptr;
+  while (MEM8[curr]|0 != 0) {
+    curr = (curr + 1)|0;
+  }
+  return (curr - ptr)|0;
+}</code></pre>
+          </section>
+          <section>
+            <h2>Компиляция</h2>
+            <hr>
+              <p><b style="color: #f85">C/C++</b>&nbsp&nbsp<b style="color: #fff">=></b>&nbsp&nbsp<b style="color: #7af">LLVM</b>&nbsp&nbsp<b style="color: #fff">=></b>&nbsp&nbsp<b style="color: #8f5"><a href="http://emscripten.org">Emscripten</a></b>&nbsp&nbsp<b style="color: #fff">=></b>&nbsp&nbsp<b style="color: #f58">JavaScript</b></p>
+            <hr>
+            <ul>
+              <li><b><a href="http://emscripten.org">Emscripten</a></b> может создавать asm.js код</li>
+              <li>asm.js код будет работать <b>во всех современных броузерах</b></li>
+              <li>С asm.js оптимизацией скорость <a href="http://nightly.mozilla.org/">Firefox</a> уже в среднем 2x скорости кода исполняемого напрямую на опрационной системе</li>
+            </ul>
+          </section>
+		  <section>
+			  <h2>Производительность</h2>
+			  <p style="text-align: left;">
+				  <img src="shumway_files/Dalvik-vs-ASM-vs-Native-edited.png" width="300" align="right">
+				  Тестирование на мобильном устройствах показывает что asm.js лучше Dalvik VM и близко к "родному" коду.<br>
+				  <br>				  
+			      <a href="https://blog.mozilla.org/javascript/2013/08/01/staring-at-the-sun-dalvik-vs-spidermonkey/">Staring at the Sun:<br> Dalvik vs. ASM.js vs. Native</a>
+			  </p>
+		  </section>           
+        </section>
+
+        <section>
+          <h2>Демострация asm.js<br> (и WebGL)</h2>
+        </section>
+
+        <section>
+          <h2>Ссылки</h2>
+          <ul>
+            <li><a href="https://github.com/mozilla/shumway">https://github.com/mozilla/shumway</a></li>
+            <li><a href="https://air.mozilla.org/overview-of-research-team-projects/">https://air.mozilla.org/overview-of-research-team-projects/</a></li>
+            <li><a href="http://asmjs.org/">http://asmjs.org/</a></li>
+            <li><a href="http://kripken.github.io/mloc_emscripten_talk/gindex.html">http://kripken.github.io/mloc_emscripten_talk/gindex.html</a></li>
+            <li>irc.mozilla.org #shumway #research</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>The End</h1>
+          <p><a href="http://people.mozilla.com/~ydelendik/presentations/games-devgamm.html">http://people.mozilla.com/~ydelendik/presentations/games-devgamm.html</a></p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+    <div id="hdr" style="z-index: 1000; border-top: 2px solid white; background-position: 80% 0; background-size: 150px; background-repeat: no-repeat; background-image: url(./shumway_files/moz.png); position: fixed; width: 100%; height: 50px; top: 0px; left: 0px;"></div>
+    <div id="ftr" style="z-index: 1000; background-position: 20% 0; background-size: 150px; background-repeat: no-repeat; background-image: url(./shumway_files/Dev_GAMM_logo_big.png); position: fixed; width: 100%; height: 50px; bottom: 50px; left: 0px;"></div>
+  </body>
+</html>

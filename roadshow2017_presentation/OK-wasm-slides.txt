@@ -1,0 +1,106 @@
+WebAssembly
+
+Hi, my name is YD. I'm a software engineer at Mozilla Research. I was always excited about different low level stuff. Involvement in WebAssembly project is a really awesome experience for me. I tried to figure out a new virtual architecture, made simple applications for it, and helped with tools for new technology. What's not to like? For the few past months, I was adding WebAssembly debug capabilities for SpiderMonkey.
+
+
+Today we are planning to talk about the following topic: 
+What's WebAssembly
+WebAssembly APIs
+Demos.
+We also will touch its relationship to JavaScript. Many tools to create WebAssembly code is under construction. So we will improvise, we will use what's available for us at the moment to try a new technology.
+
+WebAssembly is a technology that was developed by all major browser vendors. It's a really good chance that it will be supported on any device. And all four companies actively work on the specification. There was a public technical previews announcements from Mozilla, Google, Microsoft.  It's only left to decide how and when to introduce it to the Web.
+
+What is it? People might have a different opinions about this subject. I'll try to express my own.
+
+WebAssembly is a compiler target for the Web. Naturally the JavaScript is the only compiler target. We can compile or transpile  e.g. CoffeeScript, TypeScript to be run on the Web. No other technology such as ActiveX, Java, Flash, Dart tooks JavaScript's place.
+
+The asm.js showed us that it's possible to compile serious applications to the JavaScript. At the same time, it is not affected by the same performance bottlenecks as JavaScript.
+
+Try to think about WebAssembly as evolution of asm.js. It implements similar ideas, but without JavaScript syntax. Even the author of asm.js says that “WebAssembly is asm.js done right”.
+
+We can notice that applications can be performant if JavaScript can delegate some tasks to external APIs. Really good example of such API is WebGL. Having GPU allowed us to speed up complex graphics tasks and offload main CPU making video games or similar applications run fast.
+
+The WebAssembly runtime exposes it's functionality to the JavaScript as an API. That allows JavaScript code to run high-performance code at near-native hardware speed.
+
+
+Let's spend some time by reviewing why JavaScript has some performance limits. Even though in last ten year JavaScript performance increased by 30-40 times. But it is still not enough – people have modern computers and they demand near-native performance. You can notice some companies switching to native solutions; and it's understandable -- why waste a valuable CPU power? For example, on mobile devices, if more CPU is used -- less battery time you will have.
+
+By design, JavaScript is an interpreted programming language.
+
+What gave JavaScript a performance boost in past years? Just-in-time compilers. Once a JavaScript interpreter notices that same code is executed multiple times, it starts monitoring the code execution and attempts to replace interpreted code by native one and and improve properties access by inline cache.
+
+JavaScript compiler still needs time to compile some high-level programming language to somewhat optimized that is running at near-native speed. FYI it's takes enormous amount of time to compile C code for large application. We don't want to a JavaScript runtime to take a long time to run a relatively simple application. Just to notice, we need to repeat that on insane amount of client devices. A JavaScript runtime has to decide which code is worth to compile.
+
+If javascript source is large (e.g. couple of MB), parsing will require some time and memory too. 
+
+
+That is somewhat related topic. JavaScript automatically manages memory. You can control when you reserve memory (create objects or string), but you cannot control when it's released. This is scares people who wants to produce mission critical applications... and games. Finding which part of memory is available takes time and might stop execution of application while moving and releasing memory around.
+
+
+asm.js is a JavaScript, so you can still run it on every browser.
+
+asm.js does not allow you to create object or string, so there is nothing to release.  JavaScript just gives you a byte array – an application have to manage their own memory.
+
+The “use asm” hint says to compiler that a code is indeed “hot” and JavaScript runtime can start compiling, if code is valid asm.js. The valid code will provide variable types, will not have objects operations, no closures.
+
+The asm.js code is normally optimized during compilation from original sources, e.g. C/C++ will optimized by LLVM/clang algorithms. That allows to spend less time when compiling to native code on the client side. The speed at asm.js-aware engines on average not slower that 2 times of native exection speed – this depends on platforms  or application type.
+
+But it is still takes time to load, parse, validate and compile large asm.js source.
+
+
+The main use case for WebAssembly is to bring “full window” application, such as games or productivity tools, to the web. In most of the case the code exists, so why not just recompile what we have. The alternative use cases is to produce libraries that will match native performance, e.g. crypto. computer vision or AI algorithms.
+
+
+What will WebAssembly improve (in asm.js)?
+
+1. further reduce load time (especially on mobile) 
+2. reduce over-the-wire size (with and without compression) 
+3. reduce runtime memory consumption 
+4. new features: dynamic linking, memory resizing, ... 
+5. keep pushing closer to native code performance 
+
+
+Virtual ISA
+
+There is no limit how many instruction set architecture can be created. And if we are publishing an application, there is always one more we need to account for. WebAssembly proposes its own instructions that are closely mapped to the well-know architectures. I would define WebAssembly ISA as convergence of modern ISAs.
+
+Can I see some WebAssembly?
+
+
+Yes. But it will be something binary and will not be readable. It was specifically designed to reduce parsing overhead and, possibly, use it as a bytecode during interpretation.
+
+However, WebAssembly specification requires that text format will be defined to ensure it is possible for human to inspect the content of the binary code. It will be also possible to perform a around trip from text format to binary.
+
+Text format is still under construction.
+
+
+Okay, let's try to compile simple C++ into wasm.
+<<show C++ source code>>
+<<compile using emcc hello.cpp -o hello.wasm>>
+<<show via xxd and make a joke about it's size>>
+<<show text format via js or wasm-as>>
+Open web page in Nightly.
+<<show debugger source>>
+
+
+
+As you noticed, a web pages needs to load WebAssembly bytecode and the WebAssembly JavaScript API provides multiple ways to compile the code to get a WebAssembly module (in synchronous and asynchronous mannger). A module can be instantiated and need external instances provided. After that instance exposes exported by module functions to be used with JavaScript code.
+
+
+
+Let's redo hello world example without any C++ dependencies.
+
+What's next
+Debugging
+LLVM compilation to object modules
+CG pointers, multithreading
+
+
+How to start/get wasm
+
+emscripten
+directly llvm
+binaryen
+
+

@@ -1,0 +1,21 @@
+# clean built files
+
+rm helloworld.{asm.js,wasm,wasm.txt,wast,js,html}
+
+# emsdk
+
+source ~/Work/emsdk_portable/emsdk_env.sh
+
+emcc helloworld.cpp -s WASM=1 -o helloworld.html
+
+# inspect
+
+ls -la
+
+xxd -g 1 -c 12 helloworld.wasm | less
+
+# wast
+
+alias wasm-dis=~/llvmwasm/binaryen/bin/wasm-dis
+
+wasm-dis helloworld.wasm | less

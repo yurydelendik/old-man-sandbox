@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>ECMAScript 5.x</title>
+
+    <meta name="description" content="Breif overview of the ECMAScript stuff">
+    <meta name="author" content="Yury Delendik">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="ecma5_files/style.css">
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <h1>ECMAScript 5<span class="neon">.1</span></h1>
+          <h3>Brief overview in pictures</h3>
+          <p>
+            <small>Created by <a href="mailto:ydelendik@mozilla.com">Yury Delendik</a> / <a href="http://twitter.com/yurydelendik">@yurydelendik</a></small>
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Versions</h2>
+            <ul>
+               <li>Mocha, LiveScript, JavaScript in 1995</li>
+               <li>ECMA-262 (a.k.a. ECMAScript 1) in 1997</li>
+               <li>ECMAScript 3 in 1999</li>
+               <li>ECMAScript 5 in 2009</li>
+               <li>ECMAScript 6 (work in progress)</li>
+            </ul>
+
+            <aside class="notes">
+              JavaScript in Netscape 2, Ecma (!), 3.1 is 5
+              ES3 is baseline, ES4 RIP, Harmony,
+              http://people.mozilla.org/~jorendorff/es6-draft.html
+            </aside>
+          </section>
+
+          <section>
+            <h2>ECMAScript 4</h2>
+            <ul>
+               <li>RIP in 2008</li>
+               <li>Started Harmony (ES6) and ES3.1</li>
+               <li><a href="http://www.ecmascript.org/es4/spec/overview.pdf">http://www.ecmascript.org/es4/spec/overview.pdf</a></li>
+            </ul>
+            <object type="application/pdf" data="http://www.ecmascript.org/es4/spec/overview.pdf#page=11" class="fragment" width="600" height="300">
+              <img src="ecma5_files/es4.png">
+            </object>
+
+            <aside class="notes">
+              What I think about ES4, Chris Wilson
+              http://blogs.msdn.com/b/cwilso/archive/2007/10/31/what-i-think-about-es4.aspx
+            </aside>
+          </section>
+        </section>
+
+        <!-- Example of nested vertical slides -->
+        <section>
+          <section>
+            <h2>How does ECMA-262 look like</h2>
+            <object type="application/pdf" data="http://www.ecma-international.org/ecma-262/5.1/ECMA-262.pdf#page=1" height="400" width="600">
+              <img src="ecma5_files/es5.png">
+            </object>
+            <a href="http://www.ecma-international.org/ecma-262/5.1/">
+               http://www.ecma-international.org/ecma-262/5.1/
+            </a>
+          </section>
+          <section>
+            <h2>Sample: Addition operator (11.6.1)</h2>
+            <iframe src="http://www.ecma-international.org/ecma-262/5.1/#sec-11.6.1" height="400" width="600">
+              <img src="ecma5_files/es5_2.png">
+            </iframe>
+          </section>
+          <section>
+            <h2>Sample: automatic semicolon (7.9.1)</h2>
+            <iframe src="http://www.ecma-international.org/ecma-262/5.1/#sec-7.9.1" height="400" width="600">
+              <img src="ecma5_files/es5_4.png">
+            </iframe>
+          </section>
+          <section>
+            <h2>Exercise: automatic semicolon</h2>
+            <pre><code contenteditable>
+var a = 1, b = 2, c = a + b
+(function () {
+  a = c
+})()
+b</code></pre>
+             <p class="fragment">Exception: b is not a function !?</p>
+             <p class="fragment">Parser thinks that c = a + b(function () {..})() was meant</p>
+          </section>
+          <section>
+            <h2>Homework</h2>
+             <pre><code contenteditable>var x = 3.14; x|0</code></pre>
+             <pre class="fragment"><code contenteditable>parseInt(0.0000007)</code></pre>
+             <pre class="fragment"><code contenteditable>null - '1e1'</code></pre>
+             <pre class="fragment"><code contenteditable>"" + function () { return arguments; } ()</code></pre>
+             <pre class="fragment"><code contenteditable>0, {}.toString.call()</code></pre>
+          </section>
+        </section>
+<!--
+        <section data-state="blackout">
+          <h2>Spaghetti stack (or in-tree)</h2>
+          <img src="ecma5_files/stack2.svg" width="600">
+        </section>
+-->
+        <section>
+          <section>
+            <h2>Functions</h2>
+             <pre style="width: 400px; float: left"><code contenteditable>function f() {
+  return 1;
+}
+f(); // 1
+
+var g = function () {
+  return 2;
+};
+g(); // 2</code></pre>
+             <pre style="width: 400px; float: right"><code contenteditable>var obj = {
+  x: 3,
+  y: function () { return this.x; }
+};
+obj.y(); // 3</code></pre>
+
+             <pre style="width: 400px; float: right"><code contenteditable>function A(x) { this.x = x; }
+var a = new A(4);
+a.x; // 4</code></pre>
+          </section>
+          <section>
+            <h2>Lexical Environments</h2>
+            <img src="ecma5_files/scope1.svg" height="400" style="float:right;">
+            <pre style="width: 400px; float: left"><code contenteditable>
+var x = 1;
+function f1(y) {
+  var x = 2 * y;
+  function f2(z) {
+    var q = z + 1;
+    return x + q;
+  }
+  f2(1);
+  f2(2);
+}
+f1(5);
+            </code></pre>
+          </section>
+          <section>
+            <h2>Closure</h2>
+            <img src="ecma5_files/scope2.svg" height="400" styl="float:right;">
+            <pre style="width: 400px; float: left"><code contenteditable>
+function f(x) {
+  function mult(y) {
+    return x * y;
+  }
+  return mult;
+}
+var m = f(2);
+m(1); // 2
+m(2); // 4</code></pre>
+          </section>
+          <section>
+            <h2>Function.prototype.bind</h2>
+            <pre style="width: 550px; float: left; clear: right;"><code contenteditable>function f(a, b) { return this.c + a + b; }
+var obj = { c: 1, test: f };
+obj.test(2, 3); // 6</code></pre>
+            <img src="ecma5_files/bind.svg" height="300" style="float:right;">
+            <pre style="width: 350px; float: left; clear: left;"><code contenteditable>f.call(obj, 2, 3); // 6
+f.apply(obj, [2, 3]); // 6</code></pre>
+            <pre style="width: 350px; float: left; clear: left;"><code contenteditable>var f0 = f.bind(obj);
+f0(2, 3); // 6
+var f1 = f.bind(obj, 2);
+f1(3); // 6</code></pre>
+          </section>
+          <section>
+            <h2>Example: .bind() vs closure</h2>
+             <pre style="width: 400px; float: left"><code contenteditable>var items = [];
+for (var i = 0; i < 3; i++) {
+  items.push(function () {
+    return i;
+  });
+}
+items[0](); // 3 ?!</code></pre>
+             <pre style="width: 400px; float: right" class="fragment"><code contenteditable>var items = [];
+for (var i = 0; i < 3; i++) {
+  items.push((function () {
+    var j = i;
+    return function () {
+      return j;
+    };
+  })());
+};
+items[0](); // 0</code></pre>
+             <pre style="width: 400px; float: left" class="fragment"><code contenteditable>var items = [];
+for (var i = 0; i < 3; i++) {
+  items.push(function (j) {
+    return j;
+  }.bind(null, i));
+};
+items[0](); // 0</code></pre>
+            <aside class="notes"> bind is slower, but looks pretty </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Array.prototype<br>.indexOf() and .lastIndexOf()</h2>
+             <pre><code contenteditable>var a1 = {}, a2 = {}, a3 = {};
+var a = [a1, a2, a3, a2, a1];
+a.indexOf(a3); // 2
+a.lastIndexOf(a2); // 3</code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.forEach(), <br> .map(), and .filter()</h2>
+             <pre><code contenteditable>var a = [1, 2, 3, 4];
+var sum = 0;
+a.forEach(function (item) {
+  sum += item;
+});
+sum; // 10
+
+var squares = a.map(function (item) {
+  return item * item;
+});
+squares; // [1, 4, 9, 16]
+
+var even = a.filter(function (item) {
+  return (item % 2) == 0;
+});
+even; // [2, 4]</code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype <br> .every() and .some()</h2>
+             <pre><code contenteditable>var oneFalse = [true, true, false, true];
+var allFalse = [false, false, false, false];
+
+oneFalse.every(function (item) {
+  return !item;
+}); // false;
+allFalse.every(function (item) {
+  return !item;
+}); // true
+
+oneFalse.some(function (item) {
+  return item;
+}); // true
+allFalse.some(function (item) {
+  return item;
+}); // false</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Strict mode - this</h2>
+            <pre><code contenteditable>function f(x) {
+  'use strict';
+  this.x = x;
+}
+
+f(1); // fail
+new f(2); // ok
+f.call({}, 3); // ok
+</code></pre>
+          </section>
+          <section>
+            <h2>Strict mode - global</h2>
+            <pre><code contenteditable>function f(x) {
+  'use strict';
+  y = x;
+}
+
+f(1); // fail</code></pre>
+          </section>
+          <section>
+            <h2>Strict mode - duplicate names</h2>
+            <pre><code contenteditable>'use strict';
+
+var obj = {
+  x: false,
+  x: true
+}; // syntax error
+
+function f(x, x) { } // syntax error</code></pre>
+          </section>
+          <section>
+            <h2>Strict mode - arguments</h2>
+            <pre><code contenteditable>function f(x) {
+  'use strict';
+  arguments[0] = 3;
+  return x;
+}
+
+f(1); // 1</code></pre>
+          </section>
+          <section>
+            <h2>Strict mode - eval</h2>
+            <pre><code contenteditable>function f() {
+  'use strict';
+  eval("var x = 1;")
+  return x;
+}
+
+f(); // fail: x is undefined</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Object.create() and <br> Object.getPrototypeOf()</h2>
+            <pre style="width: 430px; float: left"><code contenteditable>var obj1 = {};
+obj1.x = 1;
+
+var obj2 = Object.create(null);
+obj2.x = 2;</code></pre>
+            <pre style="width: 430px; float: left; clear: left" class="fragment"><code contenteditable>Object.getPrototypeOf(obj1); // {}
+Object.getPrototypeOf(obj2); // null
+
+typeof obj2; // 'object'
+obj2 instanceof Object; // false ?!
+'toString: ' + obj2; // ?!</code></pre>
+            <img src="ecma5_files/obj1.svg" height="400" styl="float:right;" class="fragment">
+          </section>
+          <section>
+            <h2>More Object.create()</h2>
+            <pre style="width: 400px; float: left"><code contenteditable>var a = Object.create(null);
+a.x = 1;
+var b = Object.create(a);
+b.y = 2;
+var c = Object.create(b);
+c.z = 3;
+
+c.x; // 1
+Object.getPrototypeOf(c)
+  === b; // true</code></pre>
+            <img src="ecma5_files/obj2.svg" height="400" styl="float:right;">
+          </section>
+          <section>
+            <h2>Is Function an Object?</h2>
+            <pre><code contenteditable>Function instanceof Object; // true
+Object instanceof Function; // true ?!
+
+typeof Function; // 'function'
+typeof Object; // 'function' ?!</code></pre>
+            <img src="ecma5_files/obj3.svg" height="300" class="fragment">
+          </section>
+          <section>
+            <h2>No more new?</h2>
+            <pre style="width: 400px; float: left"><code contenteditable>var f = function () {
+  this.x = 2;
+};
+var a = {y: 1};
+f.prototype = a;
+
+var b = new f();
+b.y; // 1
+b.x; // 2
+b instanceof f; // true
+b instanceof Object; // true</code></pre>
+            <img src="ecma5_files/obj4.svg" height="400" styl="float:right;">
+          </section>
+          <section>
+            <h2>Usage: classes</h2>
+            <pre style="width: 480px; float: left"><code contenteditable>function A(x) { this.x = x; }
+A.prototype.f = function () {
+  return this.x;
+};
+
+function B(x, y) {
+  A.call(this, x);
+  this.y = y;
+}
+B.prototype = Object.create(A.prototype);
+B.prototype.g = function () {
+  return this.f() * this.y;
+};
+
+var b = new B(4, 5);
+b.g(); // 20</code></pre>
+            <img src="ecma5_files/obj5.svg" height="380" styl="float:right;">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Using Object Initializer</h2>
+            <pre><code contenteditable>var obj = {
+  x: 1,
+  get y() {
+    return this.x;
+  },
+  set y(x) {
+    this.x = x;
+  }
+};
+
+obj.y; // 1
+obj.y = 2;
+obj.x; // 2</code></pre>
+          </section>
+          <section>
+            <h2>Getter and setter</h2>
+            <pre><code contenteditable>var obj = {};
+obj.x = 1;
+// obj.y ?</code></pre>
+
+            <pre class="fragment"><code contenteditable>Object.defineProperty(obj, 'y', {
+  get: function () { return this.x; },
+  set: function (x) { this.x = x; },
+  enumerable: true,
+  configurable: true
+});
+</code></pre>
+          </section>
+          <section>
+            <h2>Object.defineProperties()</h2>
+            <pre><code contenteditable>var obj = {};
+Object.defineProperties(obj, {
+  x: {
+    value: 1,
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },    
+  y: {
+    get: function () { return this.x; },
+    set: function (x) { this.x = x; },
+    enumerable: true,
+    configurable: true
+  }
+});</code></pre>
+          </section>
+          <section>
+            <h2>Object.create() ... again</h2>
+            <pre><code contenteditable>var obj = Object.create(Object.prototype, {
+  x: {
+    value: 1,
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },    
+  y: {
+    get: function () { return this.x; },
+    set: function (x) { this.x = x; },
+    enumerable: true,
+    configurable: true
+  }
+});</code></pre>
+          </section>
+          <section>
+            <h2>Object.getOwnPropertyDescriptor()</h2>
+            <pre><code contenteditable>var obj = /* as defined above */;
+obj.hasOwnProperty('x'); // true
+obj.hasOwnProperty('y'); // true
+
+Object.getOwnPropertyDescriptor(obj, 'x'); /* {
+  value: 1,
+  writable: true,
+  enumerable: true,
+  configurable: true
+} */
+Object.getOwnPropertyDescriptor(obj, 'y'); /* {
+  get: function () { return this.x; },
+  set: function (x) { this.x = x; },
+  enumerable: true,
+  configurable: true
+} */</code></pre>
+          </section>
+          <section>
+            <h2>Object.keys() and <br> .getOwnPropertyNames()</h2>
+            <pre><code contenteditable>var a = Object.create(null); a.x = 1;
+var b = Object.create(a); b.y = 2;
+Object.defineProperty(b, 'z', { value: 3 });
+
+Object.getOwnPropertyDescriptor(b, 'x'); // undefined
+'x' in b; // true
+b.hasOwnProperty('x'); // ?! fail
+
+Object.keys(b); // ['y']
+Object.getOwnPropertyNames(b); // ['y', 'z']
+
+var keys = [];
+for (var i in b) keys.push(i);
+keys; // ['x', 'y'] or ['y', 'x']</code></pre>
+          </section>
+          <section>
+            <h2>Usage: classes</h2>
+            <pre><code contenteditable>function A(x) { this.x = x; }
+A.prototype = Object.create(Object.prototype, {
+  f: {
+    value: function () {
+      return this.x;
+    }
+  }
+});
+
+function B(x, y) {
+  A.call(this, x);
+  this.y = y;
+}
+B.prototype = Object.create(A.prototype, {
+  g: {
+    value: function () {
+      return this.f() * this.y;
+    }
+  }
+});</code></pre>
+          </section>
+<!--
+          <section>
+            <h2>Usage: classes (redo)</h2>
+            <pre><code contenteditable>function defineMethod(fn) {
+  return { value: fn };
+}
+
+function A(x) { this.x = x; }
+A.prototype = Object.create(Object.prototype, {
+  f: defineMethod(function () {
+    return this.x;
+  })
+});
+
+function B(x, y) {
+  A.call(this, x);
+  this.y = y;
+}
+B.prototype = Object.create(A.prototype, {
+  g: defineMethod(function () {
+    return this.f() * this.y;
+  })
+});</code></pre>
+          </section>
+-->
+        </section>
+
+        <section>
+          <h1>THE END</h1>
+          <p><a class="neon" href="http://people.mozilla.com/~ydelendik/presentations/ecma5.html">http://people.mozilla.com/~ydelendik/presentations/ecma5.html</a></p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

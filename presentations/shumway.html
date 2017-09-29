@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Shumway</title>
+
+    <meta name="description" content="Shumway">
+    <meta name="author" content="Yury Delendik">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="shumway_files/style.css">
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <section>
+            <h1>Shumway</h1>
+            <h3>Lessons learned</h3>
+            <p>
+              <small>by <a href="mailto:ydelendik@mozilla.com">Yury Delendik, Mozilla</a> / <a href="http://twitter.com/yurydelendik">@yurydelendik</a></small>
+            </p>
+          </section>
+          <section>
+            <h2>Mozilla Research</h2>
+            <p>"Our focus is advanced Web platform technology. Specifically, we're out to prove that there are no limits on open technology and that it has the same capabilities and potential that closed technology does. We spend our days finding things that are impossible — and then figuring out how to make them possible."</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Overview</h2>
+          <ul>
+             <li>Goals</li>
+             <li>SWF Format</li>
+             <li>Shumway Components</li>
+             <li>Use Cases</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Goals</h2>
+          <ul>
+             <li>Identify the parts of HTML5 platform that need to suck less</li>
+             <li>Make Flash developers more comfortable with the platform by providing reusable libraries</li>
+             <li>Build performant VM in JavaScript</li>
+             <li>Create SWF player using HTML/JavaScript</li>
+             <li>Embed player in the Firefox (and other browsers?)</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>Prior Art</h2>
+            <ul>
+               <li>Gnash</li>
+               <li>Swfdec</li>
+               <li>Lightspark</li>
+               <li>Gordon</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Gordon by tobeytaylor</h2>
+            <iframe src="shumway_files/trip.html" width="324" height="324" frameborder="0">
+            </iframe>
+          </section>
+          <section>
+            <h2>Why "Shumway"?</h2>
+            <img src="shumway_files/Cat_sandwich.jpg">
+          </section>
+          <section>
+            <h2>Why not "Shockwave"?</h2>
+            <blockquote>Emotionless, coldly logical, utterly ruthless... killing is all Shockwave lives for.</blockquote>
+                        <p style="text-align: right">— Optimus Prime</p>
+            <img src="shumway_files/Shockwave.jpg" style="height: 200px">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>SWF Format</h2>
+            <ul>
+               <li>Binary format</li>
+               <li>Often compressed using DEFLATE algorithm</li>
+               <li>Contains tags that describe timeline, shapes, sound, etc.</li>
+               <li>ActionScript is stored in tags as a bytecode</li>
+            </ul>
+            <img src="shumway_files/swf-tags.svg" class="withPadding" style="width: 75%">
+          </section>
+
+          <section>
+            <h2>Timeline</h2>
+            <img src="shumway_files/timeline.svg" style="width: 75%" class="withPadding">
+          </section>
+
+          <section>
+            <h2>ActionScript 1</h2>
+            <ul>
+               <li>Flash 5 introduces ActionScript</li>
+               <li>ECMAScript based language</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>ActionScript 2</h2>
+            <ul>
+               <li>Flash 7 implements ActionScript 2</li>
+               <li>Based on <a href="http://www.ecmascript.org/es4/spec/overview.pdf">proposed ECMAScript 4</a></li>
+               <li>As ActionScript 1, executed by AVM1</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>ActionScript 3</h2>
+            <ul>
+               <li>Flash 9 includes ActionScript 3</li>
+               <li>Runs using AVM2 (open sourced as Tamarin)</li>
+               <li>Large class library</li>
+               <li>E4X support</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Overview of<br> Flash Player internals</h2>
+            <img src="shumway_files/flash-player.png" style="width: 75%">
+          </section>
+
+          <section>
+            <h2>Compare with HTML5 platform</h2>
+            <img src="shumway_files/html.png" style="width: 75%">
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Shumway Components</h2>
+            <ul>
+               <li>Core</li>
+               <li>AVM2</li>
+               <li>Flash Natives</li>
+               <li>AVM1</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Shumway Compoments</h2>
+            <img src="shumway_files/components.svg" style="width: 75%" class="withPadding">
+          </section>
+
+          <section>
+            <h2>Shumway Components: Core</h2>
+            <ul>
+               <li>SWF Parser
+                  <ul>
+                     <li>Typed Arrays / DataView</li>
+                     <li>Web Worker</li>
+                     <li>Formats Conversion (fonts, images, etc.)</li>
+                     <li>Promises/A+</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Shumway Components: Core</h2>
+            <ul>
+               <li>Rendering
+                  <ul>
+                     <li>CANVAS</li>
+                     <li>Clipping to redraw only invalidated regions</li>
+                     <li>Quadtree to detect affected objects</li>
+                     <li>Kanvas as polyfill / prollyfill</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Clipping</h2>
+            <img src="shumway_files/clip1.svg"><br/>
+            <img src="shumway_files/clip2.svg">
+          </section>
+          <section>
+            <h2>Shumway Components: AVM2</h2>
+            <ul>
+               <li>Bytecode parser</li>
+               <li>Runtime</li>
+               <li>Interpreter</li>
+               <li>Verifier / Type Inference</li>
+               <li>Compiler</li>
+               <li>Native methods for builtins</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Shumway Components:<br> Flash natives</h2>
+            <ul>
+               <li>JavaScript code for playerglobal natives</li>
+               <li>Using existing APIs to simulate Flash, e.g.
+                  <ul>
+                     <li>Web Audio or AUDIO for sound</li>
+                     <li>VIDEO element to playback video</li>
+                  </ul>
+               </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Shumway Components: AVM1</h2>
+            <ul>
+               <li>Action code parser</li>
+               <li>Interpreter</li>
+               <li>Using AVM2 bytecode to support AS1/AS2 classes</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Additional Subprojects</h2>
+            <ul>
+               <li>ECMAScript for XML (E4X)</li>
+               <li>RegExp</li>
+               <li>Action Message Format (AMF)</li>
+               <li>RTMP <a href="https://github.com/yurydelendik/rtmp.js">*</a></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Demo of avm.js</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Use Cases</h2>
+            <ul>
+               <li>Use as a web browser add-on</li>
+               <li>Embed as IFRAME</li>
+               <li>Continue writting code in ActionScript 3</li>
+               <li>As a performance test suite / benchmark</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Demo: JavaScript uses<br> SWF resources</h2>
+            <ul>
+               <li>SWF exports symbols as classes</li>
+               <li>JavaScript implements native method</li>
+               <li>JavaScript handles DOM events</li>
+               <li>JavaScript moves Sprites on the stage</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Demo: AVM2 without CANVAS</h2>
+            <ul>
+               <li>Loads ABC code from the SWC</li>
+               <li>Directly creates AVM2 and runs the code</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>More demos</h2>
+        </section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://github.com/mozilla/shumway">https://github.com/mozilla/shumway</a></li>
+            <li><a href="https://air.mozilla.org/overview-of-research-team-projects/">https://air.mozilla.org/overview-of-research-team-projects/</a></li>
+            <li>irc.mozilla.org #shumway</li>
+            <li><a href="http://placekitten.com/">http://placekitten.com/</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>The End</h1>
+          <p><a href="http://people.mozilla.com/~ydelendik/presentations/shumway.html">http://people.mozilla.com/~ydelendik/presentations/shumway.html</a></p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+    <div id="hdr" style="z-index: 1000; border-top: 2px solid white; background-position: 80% 0; background-size: 150px; background-repeat: no-repeat; background-image: url(./shumway_files/moz.png); position: fixed; width: 100%; height: 50px; top: 0px; left: 0px;"></div>
+  </body>
+</html>

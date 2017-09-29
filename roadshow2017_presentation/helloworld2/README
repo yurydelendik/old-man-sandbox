@@ -1,0 +1,15 @@
+# cleanup
+
+rm helloworld2.wasm
+
+# build
+
+wasm-as helloworld2.wast -o helloworld2.wasm
+
+# inspect
+
+ls -la
+
+xxd -g 1 -c 12 helloworld2.wasm
+
+

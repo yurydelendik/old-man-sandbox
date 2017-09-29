@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg version="1.2" baseProfile="tiny" width="127mm" height="165.1mm" viewBox="0 0 12700 16510" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+ <defs>
+  <font id="EmbeddedFont_1" horiz-adv-x="2048">
+   <font-face font-family="Arial embedded" units-per-em="2048" font-weight="normal" font-style="normal" ascent="1847" descent="439"/>
+   <missing-glyph horiz-adv-x="2048" d="M 0,0 L 2047,0 2047,2047 0,2047 0,0 Z"/>
+   <glyph unicode="y" horiz-adv-x="971" d="M 128,-405 L 100,-240 C 137,-251 170,-256 198,-256 236,-256 266,-249 289,-236 312,-222 330,-204 345,-180 356,-162 373,-117 397,-45 400,-35 405,-21 412,-1 L 14,1067 210,1067 425,483 C 453,409 477,331 500,250 519,306 543,374 570,453 L 782,1067 977,1067 598,-28 C 555,-141 522,-218 498,-261 466,-318 430,-360 389,-387 348,-413 299,-427 243,-427 209,-427 170,-420 128,-405 Z"/>
+   <glyph unicode="x" horiz-adv-x="1017" d="M 240,0 L 14,0 410,540 43,1067 265,1067 439,818 C 471,772 499,731 524,695 551,732 577,767 602,801 L 796,1067 1022,1067 634,538 1010,0 788,0 561,324 521,383 240,0 Z"/>
+   <glyph unicode="u" horiz-adv-x="878" d="M 996,0 L 811,0 811,181 C 732,51 624,-14 489,-14 429,-14 373,-2 321,22 269,45 231,75 206,112 181,148 163,192 153,244 146,280 142,335 142,412 L 142,1067 327,1067 327,491 C 327,399 331,337 338,305 349,259 372,222 407,196 443,170 486,156 538,156 590,156 639,170 685,197 731,224 763,261 782,308 801,354 811,422 811,510 L 811,1067 996,1067 996,0 Z"/>
+   <glyph unicode="t" horiz-adv-x="532" d="M 526,161 L 555,2 C 504,-9 459,-14 419,-14 354,-14 304,-4 268,16 232,36 207,62 193,95 178,128 171,197 171,302 L 171,896 43,896 43,1067 171,1067 171,1330 356,1438 356,1067 526,1067 526,896 356,896 356,298 C 356,249 359,217 365,203 371,189 380,177 394,169 407,161 427,156 452,156 471,156 495,158 526,161 Z"/>
+   <glyph unicode="m" horiz-adv-x="1432" d="M 320,0 L 135,0 135,1067 320,1067 320,894 C 352,950 395,995 448,1029 501,1064 561,1081 629,1081 705,1081 766,1063 815,1028 863,993 897,944 917,881 1001,1014 1110,1081 1244,1081 1349,1081 1430,1052 1487,994 1543,936 1572,846 1572,726 L 1572,0 1387,0 1387,655 C 1387,725 1381,776 1369,807 1358,838 1337,863 1307,882 1277,901 1242,910 1201,910 1128,910 1067,886 1018,837 970,789 946,711 946,604 L 946,0 761,0 761,675 C 761,754 747,812 718,851 689,891 642,910 577,910 528,910 482,897 440,871 398,845 367,807 348,756 329,706 320,634 320,539 L 320,0 Z"/>
+   <glyph unicode="l" horiz-adv-x="185" d="M 327,0 L 142,0 142,1465 327,1465 327,0 Z"/>
+   <glyph unicode="f" horiz-adv-x="648" d="M 363,0 L 178,0 178,896 22,896 22,1067 178,1067 178,1179 C 178,1250 185,1303 198,1337 215,1384 247,1421 292,1450 337,1479 399,1493 478,1493 528,1493 584,1487 646,1475 L 619,1313 C 582,1319 546,1323 513,1323 458,1323 420,1311 397,1289 374,1266 363,1224 363,1162 L 363,1067 562,1067 562,896 363,896 363,0 Z"/>
+   <glyph unicode="=" horiz-adv-x="971" d="M 1081,1038 L 1081,853 114,853 114,1038 1081,1038 Z M 1081,597 L 1081,412 114,412 114,597 1081,597 Z"/>
+   <glyph unicode="2" horiz-adv-x="971" d="M 304,185 L 1024,185 1024,0 57,0 C 56,45 62,88 77,130 101,198 139,265 191,331 244,396 321,469 422,550 579,682 685,784 741,857 797,930 825,1000 825,1067 825,1135 800,1192 750,1238 699,1285 634,1308 553,1308 468,1308 399,1285 348,1237 297,1189 271,1123 270,1038 L 85,1067 C 98,1201 145,1303 227,1374 309,1444 419,1479 557,1479 696,1479 807,1440 888,1361 969,1283 1010,1185 1010,1069 1010,1010 998,952 976,895 953,838 915,778 862,715 810,652 720,567 593,460 485,372 416,312 384,280 352,248 325,217 304,185 Z"/>
+   <glyph unicode="1" horiz-adv-x="555" d="M 768,1479 L 768,0 583,0 583,1153 C 540,1111 484,1070 415,1028 345,987 283,955 228,935 L 228,1109 C 328,1157 415,1214 490,1282 565,1350 618,1415 649,1479 L 768,1479 Z"/>
+   <glyph unicode="." horiz-adv-x="185" d="M 370,0 L 185,0 185,185 370,185 370,0 Z"/>
+   <glyph unicode=")" horiz-adv-x="509" d="M 242,-412 L 114,-412 C 322,-100 427,213 427,526 427,649 412,770 382,890 358,988 325,1082 282,1172 255,1230 199,1328 114,1465 L 242,1465 C 372,1301 469,1137 531,973 585,831 612,682 612,527 612,351 576,181 504,17 432,-147 345,-290 242,-412 Z"/>
+   <glyph unicode="(" horiz-adv-x="509" d="M 626,-412 L 498,-412 C 394,-290 307,-147 235,17 164,181 128,351 128,527 128,682 155,831 208,973 271,1137 367,1301 498,1465 L 626,1465 C 541,1329 486,1233 458,1175 416,1085 382,991 358,894 328,772 313,649 313,526 313,213 417,-100 626,-412 Z"/>
+   <glyph unicode=" " horiz-adv-x="577"/>
+  </font>
+ </defs>
+ <g visibility="visible" id="MasterSlide_1_Default">
+  <desc>Master slide
+  </desc>
+  <rect fill="none" stroke="none" x="0" y="0" width="12700" height="16510"/>
+  <path fill="rgb(255,255,255)" stroke="none" d="M 6350,16509 L 0,16509 0,0 12699,0 12699,16509 6350,16509 Z"/>
+ </g>
+ <g visibility="visible" id="Slide_1_page1">
+  <g id="DrawingGroup_1">
+   <g>
+    <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_1_0" stroke-linejoin="round" d="M 6588,5064 L 4683,5064 4683,1254 8493,1254 8493,5064 6588,5064 Z"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_2_0" stroke-linejoin="round" d="M 4683,2524 L 8493,2524"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_3_0" stroke-linejoin="round" d="M 4683,3794 L 8493,3794"/>
+   </g>
+  </g>
+  <g id="Drawing_4">
+   <rect fill="none" stroke="none" x="5826" y="1381" width="1896" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="6076" y="2082">f</text>
+    <text x="6254" y="2082"> </text>
+    <text x="6427" y="2082">=</text>
+    <text x="6800" y="2082"> </text>
+   </g>
+  </g>
+  <g id="Drawing_5">
+   <rect fill="none" stroke="none" x="6080" y="3921" width="1032" height="1017"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="6330" y="4622">.</text>
+    <text x="6508" y="4622">.</text>
+    <text x="6681" y="4622">.</text>
+   </g>
+  </g>
+  <g id="DrawingGroup_2">
+   <g>
+    <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_6_0" stroke-linejoin="round" d="M 6588,10144 L 4683,10144 4683,6334 8493,6334 8493,10144 6588,10144 Z"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_7_0" stroke-linejoin="round" d="M 4683,7604 L 8493,7604"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_8_0" stroke-linejoin="round" d="M 4683,8874 L 8493,8874"/>
+   </g>
+  </g>
+  <g id="Drawing_9">
+   <rect fill="none" stroke="none" x="5709" y="6461" width="1896" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="5959" y="7162">x</text>
+    <text x="6277" y="7162"> </text>
+    <text x="6454" y="7162">=</text>
+    <text x="6823" y="7162"> </text>
+    <text x="7000" y="7162">2</text>
+   </g>
+  </g>
+  <g id="DrawingGroup_3">
+   <g>
+    <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_10_0" stroke-linejoin="round" d="M 3416,15204 L 1511,15204 1511,11394 5321,11394 5321,15204 3416,15204 Z"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_11_0" stroke-linejoin="round" d="M 1511,12664 L 5321,12664"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_12_0" stroke-linejoin="round" d="M 1511,13934 L 5321,13934"/>
+   </g>
+  </g>
+  <g id="Drawing_13">
+   <rect fill="none" stroke="none" x="2407" y="11541" width="1896" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="2657" y="12242">y</text>
+    <text x="2975" y="12242"> </text>
+    <text x="3152" y="12242">=</text>
+    <text x="3521" y="12242"> </text>
+    <text x="3698" y="12242">1</text>
+   </g>
+  </g>
+  <g id="Drawing_14">
+   <rect fill="none" stroke="none" x="2905" y="12865" width="1032" height="963"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="3155" y="13566">.</text>
+    <text x="3333" y="13566">.</text>
+    <text x="3506" y="13566">.</text>
+   </g>
+  </g>
+  <g id="DrawingGroup_4">
+   <g>
+    <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_15_0" stroke-linejoin="round" d="M 9382,15224 L 7477,15224 7477,11414 11287,11414 11287,15224 9382,15224 Z"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_16_0" stroke-linejoin="round" d="M 7477,12684 L 11287,12684"/>
+   </g>
+   <g>
+    <path fill="none" stroke="rgb(0,0,0)" id="Drawing_17_0" stroke-linejoin="round" d="M 7477,13954 L 11287,13954"/>
+   </g>
+  </g>
+  <g id="Drawing_18">
+   <rect fill="none" stroke="none" x="8493" y="11541" width="1896" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="8743" y="12242">y</text>
+    <text x="9061" y="12242"> </text>
+    <text x="9238" y="12242">=</text>
+    <text x="9607" y="12242"> </text>
+    <text x="9784" y="12242">2</text>
+   </g>
+  </g>
+  <g id="Drawing_19">
+   <rect fill="none" stroke="none" x="8859" y="12811" width="1032" height="1017"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="9109" y="13512">.</text>
+    <text x="9287" y="13512">.</text>
+    <text x="9460" y="13512">.</text>
+   </g>
+  </g>
+  <g id="Drawing_20">
+   <rect fill="none" stroke="none" x="4846" y="7822" width="2251" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="5096" y="8523">m</text>
+    <text x="5625" y="8523">u</text>
+    <text x="5977" y="8523">l</text>
+    <text x="6120" y="8523">t</text>
+    <text x="6294" y="8523"> </text>
+    <text x="6472" y="8523">=</text>
+    <text x="6844" y="8523"> </text>
+   </g>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 6588,6334 L 6588,5424"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_21_0" d="M 6588,5064 L 6438,5514 6738,5514 6588,5064 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 3413,11414 L 5384,10319"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_22_0" d="M 5699,10144 L 5233,10231 5378,10494 5699,10144 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 9255,11414 L 7528,10335"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_23_0" d="M 7223,10144 L 7525,10510 7684,10255 7223,10144 Z"/>
+  </g>
+  <g id="Drawing_24">
+   <rect fill="none" stroke="none" x="2623" y="7731" width="1456" height="963"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="2873" y="8432">f</text>
+    <text x="3051" y="8432">(</text>
+    <text x="3262" y="8432">2</text>
+    <text x="3614" y="8432">)</text>
+   </g>
+  </g>
+  <g id="Drawing_25">
+   <rect fill="none" stroke="none" x="1353" y="10452" width="1807" height="963"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="1603" y="11153">m</text>
+    <text x="2132" y="11153">(</text>
+    <text x="2344" y="11153">1</text>
+    <text x="2695" y="11153">)</text>
+   </g>
+  </g>
+  <g id="Drawing_26">
+   <rect fill="none" stroke="none" x="9636" y="10398" width="1807" height="963"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="9886" y="11099">m</text>
+    <text x="10415" y="11099">(</text>
+    <text x="10627" y="11099">2</text>
+    <text x="10978" y="11099">)</text>
+   </g>
+  </g>
+  <g>
+   <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_27_0" stroke-linejoin="round" d="M 10462,2397 L 9509,2397 9509,1508 11414,1508 11414,2397 10462,2397 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 7717,1889 L 9149,1889"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_28_0" d="M 7774,1916 L 7766,1944 7752,1971 7733,1995 7709,2014 7682,2028 7654,2036 7627,2039 7600,2036 7571,2028 7544,2014 7521,1995 7502,1971 7488,1944 7479,1916 7477,1888 7479,1862 7488,1833 7502,1807 7521,1783 7544,1764 7571,1750 7600,1742 7627,1739 7654,1742 7682,1750 7709,1764 7733,1783 7752,1807 7766,1833 7774,1862 7777,1888 7774,1916 Z"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_28_1" d="M 9509,1889 L 9059,1739 9059,2039 9509,1889 Z"/>
+  </g>
+  <g id="Drawing_29">
+   <rect fill="none" stroke="none" x="5531" y="2742" width="1896" height="1688"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="5781" y="3443">m</text>
+    <text x="6310" y="3443"> </text>
+    <text x="6488" y="3443">=</text>
+    <text x="6856" y="3443"> </text>
+   </g>
+  </g>
+  <g>
+   <path fill="rgb(255,255,255)" stroke="rgb(128,128,128)" id="Drawing_30_0" stroke-linejoin="round" d="M 10603,8805 L 9650,8805 9650,7916 11555,7916 11555,8805 10603,8805 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 7858,8297 L 9290,8297"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_31_0" d="M 7915,8324 L 7907,8352 7893,8379 7874,8403 7850,8422 7823,8436 7795,8444 7768,8447 7741,8444 7712,8436 7685,8422 7662,8403 7643,8379 7629,8352 7620,8324 7618,8296 7620,8270 7629,8241 7643,8215 7662,8191 7685,8172 7712,8158 7741,8150 7768,8147 7795,8150 7823,8158 7850,8172 7874,8191 7893,8215 7907,8241 7915,8270 7918,8296 7915,8324 Z"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_31_1" d="M 9650,8297 L 9200,8147 9200,8447 9650,8297 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(0,0,0)" d="M 7587,3372 L 9726,7538"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_32_0" d="M 7588,3435 L 7560,3441 7530,3441 7500,3435 7471,3422 7447,3404 7428,3384 7412,3361 7403,3335 7397,3306 7396,3276 7402,3246 7416,3218 7434,3194 7454,3174 7478,3159 7503,3149 7532,3144 7561,3144 7591,3149 7619,3162 7644,3180 7663,3201 7679,3224 7688,3250 7694,3277 7694,3308 7689,3338 7675,3367 7658,3391 7637,3410 7615,3426 7588,3435 Z"/>
+   <path fill="rgb(0,0,0)" stroke="none" id="Drawing_32_1" d="M 9890,7858 L 9818,7389 9551,7526 9890,7858 Z"/>
+  </g>
+  <g id="Drawing_33">
+   <rect fill="none" stroke="none" x="6065" y="9001" width="1032" height="1017"/>
+   <g fill="rgb(0,0,0)" stroke="none" font-family="Arial embedded" font-size="635" font-style="normal" font-weight="400">
+    <text x="6315" y="9702">.</text>
+    <text x="6493" y="9702">.</text>
+    <text x="6666" y="9702">.</text>
+   </g>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10525,2397 C 10525,2417 10525,2436 10524,2455"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10521,2511 C 10519,2529 10517,2547 10515,2564"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10508,2616 C 10505,2632 10502,2649 10498,2665"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10487,2714 C 10482,2732 10476,2750 10471,2768"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10452,2819 C 10445,2835 10438,2851 10431,2867"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10407,2912 C 10399,2928 10390,2943 10380,2957"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10349,3001 C 10338,3016 10327,3029 10316,3043"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10280,3081 C 10267,3094 10254,3105 10241,3117"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10200,3150 C 10186,3161 10172,3171 10157,3181"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10112,3210 C 10097,3218 10081,3227 10065,3235"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10018,3258 C 10002,3265 9985,3272 9969,3279"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9919,3297 C 9902,3303 9885,3308 9868,3314"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9817,3328 C 9800,3332 9782,3336 9765,3340"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9713,3351 C 9696,3354 9678,3358 9661,3360"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9608,3368 C 9590,3370 9573,3373 9555,3375"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9502,3380 C 9484,3381 9467,3382 9449,3384"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9396,3386 C 9378,3387 9361,3388 9343,3388"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9289,3389 C 9271,3390 9253,3390 9235,3390"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9183,3389 C 9165,3389 9148,3388 9131,3388"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9076,3386 C 9058,3385 9040,3384 9022,3383"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8969,3380 C 8952,3379 8935,3378 8918,3377"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8863,3373 C 8844,3371 8826,3370 8808,3368"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8757,3364 C 8745,3363 8733,3363 8721,3362"/>
+   <path fill="rgb(128,0,0)" stroke="none" id="Drawing_34_0" d="M 8495,3335 L 8783,3466 8804,3267 8495,3335 Z"/>
+  </g>
+  <g>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10525,8874 C 10525,8894 10525,8913 10524,8932"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10521,8988 C 10519,9006 10517,9024 10515,9042"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10508,9093 C 10505,9110 10502,9126 10498,9142"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10486,9191 C 10481,9210 10475,9227 10469,9245"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10450,9296 C 10443,9312 10436,9328 10429,9343"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10404,9388 C 10395,9403 10386,9418 10376,9432"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10344,9476 C 10333,9490 10321,9503 10309,9516"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10272,9553 C 10259,9565 10246,9576 10232,9587"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10189,9619 C 10175,9629 10160,9638 10145,9647"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10098,9673 C 10082,9682 10066,9689 10050,9697"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 10001,9717 C 9985,9723 9968,9729 9952,9734"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9901,9750 C 9883,9755 9866,9759 9849,9764"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9797,9775 C 9780,9778 9762,9782 9745,9784"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9692,9792 C 9675,9795 9657,9797 9639,9799"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9586,9803 C 9568,9805 9551,9806 9533,9807"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9480,9809 C 9462,9810 9444,9810 9427,9810"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9374,9810 C 9356,9810 9338,9810 9320,9810"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9266,9808 C 9248,9807 9231,9806 9213,9806"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9160,9802 C 9143,9801 9125,9800 9108,9799"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 9053,9794 C 9035,9792 9017,9791 9000,9789"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8948,9784 C 8930,9782 8913,9780 8896,9778"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8840,9772 C 8822,9770 8804,9768 8787,9766"/>
+   <path fill="none" stroke="rgb(128,0,0)" d="M 8737,9760 C 8731,9760 8724,9759 8718,9758"/>
+   <path fill="rgb(128,0,0)" stroke="none" id="Drawing_35_0" d="M 8493,9726 L 8777,9865 8804,9667 8493,9726 Z"/>
+  </g>
+ </g>
+</svg>
