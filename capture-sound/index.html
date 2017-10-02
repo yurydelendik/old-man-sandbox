@@ -156,7 +156,13 @@
         var recordingTimeout;
         var recordingEndsAt;
         function record(maxTime) {
-            getUserMedia({ audio: true }).then(function (stream) {
+            getUserMedia({
+                audio: {
+                    echoCancellation: false,
+                    noiseSuppression: false,
+                    autoGainControl: false,
+                }
+            }).then(function (stream) {
                 startRecording(stream);
                 recordingEndsAt = Date.now() + maxTime;
                 recordingTimeout = setTimeout(function () {
