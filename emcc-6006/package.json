@@ -1,0 +1,16 @@
+{
+  "name": "emcc-6006",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack entry.js result.js --resolve-alias test=./test.js && webpack entry.js result.old.js --resolve-alias test=./test.old.js && webpack entry.js result.proposed.js --resolve-alias test=./test.proposed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^3.10.0"
+  }
+}
