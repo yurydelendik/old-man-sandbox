@@ -77,49 +77,20 @@ console.log(testInstance.test());
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;var Test = function(Test) {
+var Test = function(Test) {
     Test = Test || {};
   
     Test.test = function () { return "hi"; };
     return Test;
   };
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() { return Test; }).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  }
-  if ("function" === "function" && typeof module === "object" && module && module['exports']) {
-    module['exports'] = Test;
-  };
+
+if (true)
+  module.exports = Test;
+else if (typeof define === 'function' && define['amd'])
+  define([], function() { return Test; });
+else if (typeof exports === 'object')
+  exports["Test"] = Test;
   
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
 
 /***/ })
 /******/ ]);
