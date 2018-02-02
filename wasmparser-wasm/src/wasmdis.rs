@@ -7,7 +7,7 @@ use wasmparser::{Parser, ParserState, WasmDecoder};
 use wasmtext::Writer;
 
 extern "C" {
-    fn log(arg1: *const u8, len: u32);
+    fn jslog(arg1: *const u8, len: u32);
 }
 
 #[no_mangle]
@@ -43,10 +43,9 @@ pub fn parse(bytes: *const u8, len: u32) {
                 break;
             }
         }
-
     }
     let y = tmp.as_slice();
     unsafe {
-        log(y.as_ptr(), y.len() as u32);
+        jslog(y.as_ptr(), y.len() as u32);
     }
 }

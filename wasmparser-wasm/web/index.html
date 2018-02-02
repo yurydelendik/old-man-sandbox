@@ -5,11 +5,12 @@
         const testWasmPath = "./test.wasm";
         const wasmdistPath = "./wasmdis.wasm";
         var memory, data;
+        var utf8Decoder = new TextDecoder('utf-8');
         var imports = {
             env: {
-                log: function (p, len) {
-                    console.log(
-                        String.fromCharCode.apply(null, new Uint8Array(memory.buffer, p, len)));
+                jslog: function (p, len) {
+                    var text = utf8Decoder.decode(new Uint8Array(memory.buffer, p, len));
+                    console.log(text);
                 },
             }
         };
@@ -23,6 +24,7 @@
                 var p = instance.exports.alloc(data.length);
                 new Uint8Array(memory.buffer, p, data.length).set(data);
                 instance.exports.parse(p, data.length);
+                instance.exports.dealloc(p, data.length);
             });
     </script>
 </body>

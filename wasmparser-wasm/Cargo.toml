@@ -10,7 +10,8 @@ crate-type = ["cdylib"]
 
 [profile.release]
 debug = true
+opt-level = 1
 
 [dependencies]
 wasmparser = "0.14.1"
-wasmtext = { git = "https://github.com/yurydelendik/wasmtext", rev = "aadf169" }
+wasmtext = { git = "https://github.com/yurydelendik/wasmtext", rev = "ab3fbe5" }
