@@ -1,0 +1,16 @@
+[package]
+name = "wasmparser-wasm"
+version = "0.1.0"
+authors = ["Yury Delendik <ydelendik@mozilla.com>"]
+
+[lib]
+name = "wasmdis"
+path = "src/wasmdis.rs"
+crate-type = ["cdylib"]
+
+[profile.release]
+debug = true
+
+[dependencies]
+wasmparser = "0.14.1"
+wasmtext = { git = "https://github.com/yurydelendik/wasmtext", rev = "aadf169" }

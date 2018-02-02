@@ -1,0 +1,30 @@
+<html>
+
+<body>
+    <script>
+        const testWasmPath = "./test.wasm";
+        const wasmdistPath = "./wasmdis.wasm";
+        var memory, data;
+        var imports = {
+            env: {
+                log: function (p, len) {
+                    console.log(
+                        String.fromCharCode.apply(null, new Uint8Array(memory.buffer, p, len)));
+                },
+            }
+        };
+        fetch(testWasmPath).then(req => req.arrayBuffer())
+            .then(buffer => {
+                data = new Uint8Array(buffer);
+                return WebAssembly.instantiateStreaming(fetch(wasmdistPath), imports);
+            })
+            .then(({ instance, }) => {
+                memory = instance.exports.memory;
+                var p = instance.exports.alloc(data.length);
+                new Uint8Array(memory.buffer, p, data.length).set(data);
+                instance.exports.parse(p, data.length);
+            });
+    </script>
+</body>
+
+</html>
