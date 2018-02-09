@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [profile.release]
 debug = true
-opt-level = 1
+opt-level = 2
 
 [dependencies]
 wasmparser = "0.14.1"
