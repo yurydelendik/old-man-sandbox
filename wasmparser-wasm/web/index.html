@@ -1,32 +1,31 @@
 <html>
+<head>
+    <title>wasmparser.rs in WebAssembly</title>
+    <style>
+        body, html {
+            font-family: sans-serif;
+        }
 
+        #file-selector {
+            margin-bottom: 16px;
+        }
+
+        #default-hint {
+            font-style: italic;
+            color: darkgray;
+        }
+    </style>
+</head>
 <body>
-    <script>
-        const testWasmPath = "./test.wasm";
-        const wasmdistPath = "./wasmdis.wasm";
-        var memory, data;
-        var utf8Decoder = new TextDecoder('utf-8');
-        var imports = {
-            env: {
-                jslog: function (p, len) {
-                    var text = utf8Decoder.decode(new Uint8Array(memory.buffer, p, len));
-                    console.log(text);
-                },
-            }
-        };
-        fetch(testWasmPath).then(req => req.arrayBuffer())
-            .then(buffer => {
-                data = new Uint8Array(buffer);
-                return WebAssembly.instantiateStreaming(fetch(wasmdistPath), imports);
-            })
-            .then(({ instance, }) => {
-                memory = instance.exports.memory;
-                var p = instance.exports.alloc(data.length);
-                new Uint8Array(memory.buffer, p, data.length).set(data);
-                instance.exports.parse(p, data.length);
-                instance.exports.dealloc(p, data.length);
-            });
-    </script>
+    <div id="file-selector">
+       <label for="file">Select file: </label><input id="file" type="file" disabled>
+    </div>
+    <div>
+        <label for="disasm">Disassembly:</label>
+        <span id="default-hint">(by default <a href="test.wasm"> test.wasm</a> is shown)</span><br>
+        <pre id="disasm"></pre>
+    </div>
+    <script src="wasmdis.js"></script>
 </body>
 
 </html>
