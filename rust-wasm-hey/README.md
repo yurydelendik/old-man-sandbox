@@ -1,7 +1,14 @@
 # Building
 
 ```
-rustup target add wasm32-unknown-emscripten
-source ~/Work/emsdk_portable/emsdk_env.sh
-rustc --target=wasm32-unknown-emscripten hey.rs -o hey.html -Clink-args="--source-map-base http://yurydelendik.github.io/old-man-sandbox/rust-wasm-hey/ -g4" -g
+rustup target add --toolchain=nightly wasm32-unknown-unknown
+
+# build wasm and source map (see Makefile)
+rustc +nightly --target=wasm32-unknown-unknown hey.rs -o hey.wasm --crate-type=cdylib -O -g
+wasm-sourcemap.py hey.wasm -o hey.wasm.map
+
+# or without map and debug info
+
+rustc +nightly --target=wasm32-unknown-unknown hey.rs -o hey.wasm --crate-type=cdylib -O -Clink-args="--strip-debug"
+
 ```
