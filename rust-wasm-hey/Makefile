@@ -5,7 +5,7 @@ WASM_SOURCEMAP_CMD = $(EMSCRIPTEN)/tools/wasm-sourcemap.py \
   --dwarfdump=$(DWARFDUMP)
 PUBLISH_URL ?= https://yurydelendik.github.io/old-man-sandbox/rust-wasm-hey/
 
-build: hey.wasm hey.wasm.map
+build: hey.wasm hey.wasm.map hey.dbg.wasm
 
 hey.wasm:
 	rustc +nightly --target=wasm32-unknown-unknown hey.rs -o hey.wasm --crate-type=cdylib -g
@@ -20,7 +20,12 @@ hey.wasm.map: hey.wasm
 	    rustc/compiler_builtins_shim/../../libcompiler_builtins/=$(RUST_SRC)/src/libcompiler_builtins/ \
 	    --scope-info
 
+hey.dbg.wasm: hey.wasm
+	cat hey.wasm > hey.dbg.wasm
+	./misc/wasm-section.py sourceMappingURL --string "hey.dbg.wasm" >> hey.dbg.wasm
+	./misc/wasm-section.py sourceURLPrefixes -s -f ./misc/remappings.json >> hey.dbg.wasm
+
 clean:
-	-rm hey.wasm hey.wasm.map hey.prod.wasm
+	-rm hey.wasm hey.wasm.map hey.prod.wasm hey.dbg.wasm
 
 .PHONY: build clean

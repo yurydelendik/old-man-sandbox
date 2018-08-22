@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Rust WebAssembly + Source Maps example</title>
+  </head>
+  <body>
+    <pre id="log"></pre>
+    <script>
+      const utf8Decoder = new TextDecoder('utf-8');
+      const utf8Encoder = new TextEncoder('utf-8');
+
+      const imports = {
+        env: {
+          print(p, len) {
+            const buf = new Uint8Array(wasmMemory.buffer, p, len);
+            document.getElementById("log").textContent += utf8Decoder.decode(buf) + '\n';
+          }
+        }
+      };
+      let wasmMemory;
+
+      const name = 'World';
+
+      (async () => {
+        const req = fetch('hey.dbg.wasm');
+        const { instance } = await WebAssembly.instantiateStreaming(req, imports);
+        wasmMemory = instance.exports.memory;
+
+        const name_bytes = utf8Encoder.encode(name);
+        const name_p = instance.exports.alloc_mem(name_bytes.length);
+        new Uint8Array(wasmMemory.buffer, name_p, name_bytes.length).set(name_bytes);
+
+        instance.exports.hello(name_p, name_bytes.length);
+
+        instance.exports.free_mem(name_p);
+      })();
+    </script>
+  </body>
+</html>
