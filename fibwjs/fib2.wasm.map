@@ -1,0 +1,1 @@
+{"version":3,"names":[],"sources":["fib2.c"],"sourcesContent":["int fib(int n) {\n  int i, t, a = 0, b = 1;\n  for (i = 0; i < n; i++) {\n    t = a;\n    a = b;\n    b += t;\n  }\n  return b;\n}\n"],"mappings":"iHAAA,qCACY,OAAO,OACV,OAAK,WAAI,OAAF,eAAd,SACM,OAAF,OACE,OAAF,OACG,OAAH,qBAHgB,yBAApB,EAAA,EAKO,OAAP,GAAA"}
