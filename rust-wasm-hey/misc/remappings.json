@@ -1,13 +1,13 @@
 [
-  ["/checkout/src/dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
-  ["/checkout/src/", "https://raw.githubusercontent.com/rust-lang/rust/d767ee11616390d128853a06f5addb619e79213f/src/"],
+  ["/rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
+  ["/rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/"],
   ["rustc/dlmalloc_shim/../../dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
-  ["liballoc", "https://raw.githubusercontent.com/rust-lang/rust/d767ee11616390d128853a06f5addb619e79213f/src/liballoc/"],
-  ["rustc/compiler_builtins_shim/../../libcompiler_builtins/", "https://raw.githubusercontent.com/rust-lang-nursery/compiler-builtins/d549d85b1735dc5066b2973f8549557a813bb9c8/"],
+  ["liballoc", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/liballoc/"],
+  ["rustc/compiler_builtins_shim/../../libcompiler_builtins/", "https://raw.githubusercontent.com/rust-lang-nursery/compiler-builtins/0703bfa72524e01e414477657ca9b64794c5c1c3/"],
   ["libcore/../stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/05c2f61c384e2097a3a4c648344114fc4ac983be/"],
-  ["libcore/", "https://raw.githubusercontent.com/rust-lang/rust/d767ee11616390d128853a06f5addb619e79213f/src/libcore/"],
-  ["libpanic_abort/", "https://raw.githubusercontent.com/rust-lang/rust/d767ee11616390d128853a06f5addb619e79213f/src/libpanic_abort/"],
-  ["libstd/", "https://raw.githubusercontent.com/rust-lang/rust/d767ee11616390d128853a06f5addb619e79213f/src/libstd/"],
+  ["libcore/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libcore/"],
+  ["libpanic_abort/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libpanic_abort/"],
+  ["libstd/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libstd/"],
   ["stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/05c2f61c384e2097a3a4c648344114fc4ac983be/"],
   ["/Users/yury/Work/old-man-sandbox/rust-wasm-hey/", "./"]
 ]

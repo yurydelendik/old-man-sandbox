@@ -4,6 +4,7 @@ DWARFDUMP ?= $(HOME)/Work/llvmwasm/llvm-build/bin/llvm-dwarfdump
 WASM_SOURCEMAP_CMD = $(EMSCRIPTEN)/tools/wasm-sourcemap.py \
   --dwarfdump=$(DWARFDUMP)
 PUBLISH_URL ?= https://yurydelendik.github.io/old-man-sandbox/rust-wasm-hey/
+RUST_DBG_PREFIX ?= /rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc
 
 build: hey.wasm hey.wasm.map hey.dbg.wasm
 
@@ -13,12 +14,15 @@ hey.wasm:
 hey.wasm.map: hey.wasm
 	$(WASM_SOURCEMAP_CMD) hey.wasm -w hey.prod.wasm -o hey.wasm.map \
 	  -x -s --source-map-url=$(PUBLISH_URL)hey.wasm.map \
-	  -l /checkout/src/=$(RUST_SRC)/src/ libcore/=$(RUST_SRC)/src/libcore/ \
-	    libstd/=$(RUST_SRC)/src/libstd/ rustc/dlmalloc_shim/../../dlmalloc/=$(RUST_SRC)/src/dlmalloc/ \
-	    liballoc/=$(RUST_SRC)/src/liballoc/ libpanic_abort/=$(RUST_SRC)/src/dlmalloc/ \
-	    liballoc/=$(RUST_SRC)/src/libpanic_abort/ \
-	    rustc/compiler_builtins_shim/../../libcompiler_builtins/=$(RUST_SRC)/src/libcompiler_builtins/ \
-	    --scope-info
+		-p `pwd`/lib=$(RUST_DBG_PREFIX)/src/lib \
+		  lib=$(RUST_DBG_PREFIX)/src/lib \
+		  rustc=$(RUST_DBG_PREFIX)/src/rustc \
+		  `pwd`=.. \
+	  -l $(RUST_DBG_PREFIX)=$(RUST_SRC) \
+		  `pwd`/lib=$(RUST_SRC)/src/lib \
+		  lib=$(RUST_SRC)/src/lib \
+		  rustc=$(RUST_SRC)/src/rustc \
+	  --scope-info
 
 hey.dbg.wasm: hey.wasm
 	cat hey.wasm > hey.dbg.wasm
