@@ -1,6 +1,6 @@
 WASMCEPTION ?= $(HOME)/Work/wasmception
 
-shuffle.wasm:
+shuffle.wasm: shuffle.c
 	$(WASMCEPTION)/dist/bin/clang --target=wasm32-unknown-unknown-wasm \
 	 --sysroot=$(WASMCEPTION)/sysroot \
 	 shuffle.c \
