@@ -1,0 +1,6 @@
+[target.wasm32-unknown-unknown]
+rustflags = [
+  "-C", "link-arg=--strip-all",
+  "-C", "link-arg=--gc-sections",
+  "-C", "link-arg=--compress-relocations",
+]
