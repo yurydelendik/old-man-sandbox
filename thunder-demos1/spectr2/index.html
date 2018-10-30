@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Record</title>
+  <meta charset="utf-8">
+  <style>
+    html, body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+    }
+    #display {
+      text-align: center;
+    }
+    #toolbar {
+      text-align: center;
+    }
+    button#start {
+      font-size: xx-large;
+      background-color: lightgreen;
+      color: black;
+      border: 0px none;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    #indicator {
+      font-size: large;
+      text-align: center;
+      vertical-align: middle;
+    }
+    #speed {
+      color: orange;
+      font-size: xx-large;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="display">
+    <canvas id="canvas" width="512" height="256"></canvas><br>
+  </div>
+  <div id="toolbar">
+    <button id="start">Start</button>
+  </div>
+
+  <p id="indicator">
+    Performance
+    <span id="speed">n/a</span>
+    spectrums/sec
+  </p>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>

@@ -20,7 +20,7 @@ const calc_spectrum_wasm = (buffer) => {
   Wasm.transform();
   return Wasm.getSpectrum();
 };
-const calc_spectrum = calc_spectrum_js;
+const calc_spectrum = calc_spectrum_wasm;
 
 let calc_time = 0;
 let calc_count = 0;
