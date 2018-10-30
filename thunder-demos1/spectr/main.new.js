@@ -5,15 +5,22 @@
 import { SoundListener } from './soundlistener.js';
 import { paintNextColumn } from './display.js';
 import { DFT } from './dsp.js';
+import * as Wasm from './wasm_dft.js';
 
 const SAMPLE_RATE = 44100;
 const BUFFER_SIZE = 1024;
 
 const dft = new DFT(BUFFER_SIZE, SAMPLE_RATE);
-const calc_spectrum = (buffer) => {
+const calc_spectrum_js = (buffer) => {
   dft.forward(buffer);
   return dft.spectrum;
 };
+const calc_spectrum_wasm = (buffer) => {
+  Wasm.getData().set(buffer);
+  Wasm.transform();
+  return Wasm.getSpectrum();
+};
+const calc_spectrum = calc_spectrum_js;
 
 let calc_time = 0;
 let calc_count = 0;
@@ -27,6 +34,10 @@ listener.onChunk = (chunk) => {
   paintNextColumn(spectrum);
 };
 
+document.getElementById("start").setAttribute("disabled", "disabled");
+Wasm.init(BUFFER_SIZE).then(() => {
+  document.getElementById("start").removeAttribute("disabled");
+});
 document.getElementById("start").addEventListener("click", () => {
   listener.start();
 });
