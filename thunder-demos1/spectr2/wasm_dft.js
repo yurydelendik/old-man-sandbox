@@ -14,10 +14,10 @@ const wasmLocation = "./dsp_rs.wasm";
 export async function init(size_) {
   size = size_;
 
-  // const file = await (await fetch(wasmLocation)).arrayBuffer();
-  // const { instance, } = await WebAssembly.instantiate(request);
-  const request = fetch(wasmLocation);
-  const { instance, } = await WebAssembly.instantiateStreaming(request);
+  const file = await (await fetch(wasmLocation)).arrayBuffer();
+  const { instance, } = await WebAssembly.instantiate(file);
+  // const request = fetch(wasmLocation);
+  // const { instance, } = await WebAssembly.instantiateStreaming(request);
 
   instance.exports.init(size);
 
