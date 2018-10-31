@@ -11,20 +11,20 @@ function print(type, msg) {
 
 function test_wasm() {
   const start = performance.now();
-  let sum = 0;
-  for (let i = -16; i <= 16; i += 1e-5)
-    sum += sigmoid_wasm(i) - 0.5;
+  let sum = sigmoid_wasm(0);
+  for (let i = 30; i > 0; i -= 0.00001)
+    sum += sigmoid_wasm(i) + sigmoid_wasm(-i) - 1;
   print("wasm", performance.now() - start);
   console.log("wasm", sum);
 }
 
 function test_js() {
   const start = performance.now();
-  let sum = 0; 
-  for (let i = -16; i <= 16; i += 1e-5)
-    sum += sigmoid_js(i) - 0.5;
+  let sum = sigmoid_js(0); 
+  for (let i = 30; i > 0; i -= 0.00001)
+    sum += sigmoid_js(i) + sigmoid_js(-i) - 1;
   print("js", performance.now() - start);
-  console.log("wasm", sum);
+  console.log("js", sum);
 }
 
 function run() {
