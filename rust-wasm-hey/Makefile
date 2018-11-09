@@ -4,7 +4,7 @@ DWARFDUMP ?= $(HOME)/Work/llvmwasm/llvm-build/bin/llvm-dwarfdump
 WASM_SOURCEMAP_CMD = $(EMSCRIPTEN)/tools/wasm-sourcemap.py \
   --dwarfdump=$(DWARFDUMP)
 PUBLISH_URL ?= https://yurydelendik.github.io/old-man-sandbox/rust-wasm-hey/
-RUST_DBG_PREFIX ?= /rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc
+RUST_DBG_PREFIX ?= /rustc/653da4fd006c97625247acd7e076d0782cdc149b
 
 build: hey.wasm hey.wasm.map hey.dbg.wasm
 
@@ -14,14 +14,8 @@ hey.wasm:
 hey.wasm.map: hey.wasm
 	$(WASM_SOURCEMAP_CMD) hey.wasm -w hey.prod.wasm -o hey.wasm.map \
 	  -x -s --source-map-url=$(PUBLISH_URL)hey.wasm.map \
-		-p `pwd`/lib=$(RUST_DBG_PREFIX)/src/lib \
-		  lib=$(RUST_DBG_PREFIX)/src/lib \
-		  rustc=$(RUST_DBG_PREFIX)/src/rustc \
-		  `pwd`=.. \
+		-p `pwd`=. \
 	  -l $(RUST_DBG_PREFIX)=$(RUST_SRC) \
-		  `pwd`/lib=$(RUST_SRC)/src/lib \
-		  lib=$(RUST_SRC)/src/lib \
-		  rustc=$(RUST_SRC)/src/rustc \
 	  --scope-info
 
 hey.dbg.wasm: hey.wasm

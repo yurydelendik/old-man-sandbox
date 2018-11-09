@@ -1,13 +1,10 @@
 [
-  ["/rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
-  ["/rustc/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/"],
-  ["rustc/dlmalloc_shim/../../dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
-  ["liballoc", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/liballoc/"],
-  ["rustc/compiler_builtins_shim/../../libcompiler_builtins/", "https://raw.githubusercontent.com/rust-lang-nursery/compiler-builtins/0703bfa72524e01e414477657ca9b64794c5c1c3/"],
-  ["libcore/../stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/05c2f61c384e2097a3a4c648344114fc4ac983be/"],
-  ["libcore/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libcore/"],
-  ["libpanic_abort/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libpanic_abort/"],
-  ["libstd/", "https://raw.githubusercontent.com/rust-lang/rust/20dc0c50704ba1fc8c56a88ae2bf05ddb3e419bc/src/libstd/"],
-  ["stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/05c2f61c384e2097a3a4c648344114fc4ac983be/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/rustc/dlmalloc_shim/../../dlmalloc/", "https://raw.githubusercontent.com/alexcrichton/dlmalloc-rs/c99638dc2ecfc750cc1656f6edb2bd062c1e0981/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/libcore/../stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/0309be1ade6bf61066f2c69f77ac3567b7dc31b5/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/libstd/../stdsimd/", "https://raw.githubusercontent.com/rust-lang-nursery/stdsimd/0309be1ade6bf61066f2c69f77ac3567b7dc31b5/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/rustc/compiler_builtins_shim/../../libcompiler_builtins/src/../libm/", "https://raw.githubusercontent.com/rust-lang-nursery/libm/3559e703795d33e84a91da2a35f2f3baac47e872/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/rustc/compiler_builtins_shim/../../libcompiler_builtins/", "https://raw.githubusercontent.com/rust-lang-nursery/compiler-builtins/939cbca6e9d829265d6cf006d3532142a4061cd3/"],
+  ["/rustc/653da4fd006c97625247acd7e076d0782cdc149b/src/", "https://raw.githubusercontent.com/rust-lang/rust/653da4fd006c97625247acd7e076d0782cdc149b/src/"],
   ["/Users/yury/Work/old-man-sandbox/rust-wasm-hey/", "./"]
 ]
