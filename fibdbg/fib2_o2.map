@@ -1,0 +1,127 @@
+{
+  "mappings": "+GAAA,OAEiB,OAAd,cAGI,WAHU,KAAd,MAKA,EAAA",
+  "names": [],
+  "sources": [
+    "././fib2.c"
+  ],
+  "version": 3,
+  "x-scopes": {
+    "code_section_offset": 106,
+    "debug_info": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "decl_file": 0,
+                "decl_line": 1,
+                "name": "n",
+                "tag": "formal_parameter",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": [
+                  {
+                    "expr": "11009F",
+                    "range": [
+                      7,
+                      26
+                    ]
+                  },
+                  {
+                    "expr": "ED00039F",
+                    "range": [
+                      30,
+                      53
+                    ]
+                  }
+                ],
+                "name": "a",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": [
+                  {
+                    "expr": "11019F",
+                    "range": [
+                      7,
+                      28
+                    ]
+                  },
+                  {
+                    "expr": "ED00039F",
+                    "range": [
+                      30,
+                      35
+                    ]
+                  },
+                  {
+                    "expr": "ED00019F",
+                    "range": [
+                      35,
+                      50
+                    ]
+                  }
+                ],
+                "name": "b",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": [
+                  {
+                    "expr": "11009F",
+                    "range": [
+                      7,
+                      26
+                    ]
+                  }
+                ],
+                "name": "i",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "name": "t",
+                "tag": "variable",
+                "type": "int"
+              }
+            ],
+            "decl_file": 0,
+            "decl_line": 1,
+            "external": true,
+            "high_pc": 58,
+            "low_pc": 5,
+            "name": "fib",
+            "prototyped": true,
+            "tag": "subprogram",
+            "type": "int"
+          },
+          {
+            "byte_size": 4,
+            "encoding": "signed",
+            "name": "int",
+            "tag": "base_type"
+          }
+        ],
+        "comp_dir": ".",
+        "high_pc": 58,
+        "language": "C99",
+        "low_pc": 5,
+        "name": "fib2.c",
+        "producer": "clang version 8.0.0 (trunk 349519)",
+        "stmt_list": 0,
+        "tag": "compile_unit"
+      }
+    ]
+  }
+}

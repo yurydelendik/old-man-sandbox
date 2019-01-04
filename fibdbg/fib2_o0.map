@@ -1,0 +1,85 @@
+{
+  "mappings": "iHAAA,qCACa,OAAO,OACV,OAAK,WAAI,OAAF,eAAd,SACM,OAAF,OACE,OAAF,OACG,OAAH,qBAHgB,yBAApB,EAAA,EAKO,OAAP,GAAA",
+  "names": [],
+  "sources": [
+    "././fib2.c"
+  ],
+  "version": 3,
+  "x-scopes": {
+    "code_section_offset": 107,
+    "debug_info": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "decl_file": 0,
+                "decl_line": 1,
+                "location": "231C",
+                "name": "n",
+                "tag": "formal_parameter",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": "2318",
+                "name": "i",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": "2314",
+                "name": "t",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": "2310",
+                "name": "a",
+                "tag": "variable",
+                "type": "int"
+              },
+              {
+                "decl_file": 0,
+                "decl_line": 2,
+                "location": "230C",
+                "name": "b",
+                "tag": "variable",
+                "type": "int"
+              }
+            ],
+            "decl_file": 0,
+            "decl_line": 1,
+            "external": true,
+            "frame_base": "ED00039F",
+            "high_pc": 202,
+            "low_pc": 6,
+            "name": "fib",
+            "prototyped": true,
+            "tag": "subprogram",
+            "type": "int"
+          },
+          {
+            "byte_size": 4,
+            "encoding": "signed",
+            "name": "int",
+            "tag": "base_type"
+          }
+        ],
+        "comp_dir": ".",
+        "high_pc": 202,
+        "language": "C99",
+        "low_pc": 6,
+        "name": "fib2.c",
+        "producer": "clang version 8.0.0 (trunk 349519)",
+        "stmt_list": 0,
+        "tag": "compile_unit"
+      }
+    ]
+  }
+}

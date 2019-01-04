@@ -1,0 +1,8 @@
+<script>
+async function t() {
+  const { instance } = await WebAssembly.instantiateStreaming(fetch("fib2_o0.wasm"));
+  console.log(instance.exports.fib(7));
+}
+
+t();
+</script>
