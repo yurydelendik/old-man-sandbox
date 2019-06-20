@@ -1,0 +1,3 @@
+SetEnvIf Request_URI "gcd\.wasm$" set_header
+#Header set SourceMap "http://localhost/Work/old-man-sandbox/gcd/gcd.wasm" env=set_header
+Header set SourceMap "http://localhost/Work/old-man-sandbox/gcd/gcd.wasm"

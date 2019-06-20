@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>GCD</title>
+  </head>
+
+  <body>
+    <script>
+      async function load() {
+	const { instance } = await WebAssembly.instantiateStreaming(fetch("gcd.wasm"))
+
+        return instance.exports.gcd;
+      }
+
+      var gcd;
+      load().then(r => (gcd = r), console.error);
+
+      function run() {
+        alert("gcd(27, 6) = " + gcd(27, 6));
+      }
+    </script>
+
+    <button onclick="run()">Run</button>
+  </body>
+</html>
