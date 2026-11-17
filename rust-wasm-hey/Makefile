@@ -9,7 +9,7 @@ RUST_DBG_PREFIX ?= /rustc/653da4fd006c97625247acd7e076d0782cdc149b
 build: hey.wasm hey.wasm.map hey.dbg.wasm
 
 hey.wasm:
-	rustc +nightly --target=wasm32-unknown-unknown hey.rs -o hey.wasm --crate-type=cdylib -g
+	rustc --target=wasm32-unknown-unknown hey.rs -o hey.wasm --crate-type=cdylib -g
 
 hey.wasm.map: hey.wasm
 	$(WASM_SOURCEMAP_CMD) hey.wasm -w hey.prod.wasm -o hey.wasm.map \

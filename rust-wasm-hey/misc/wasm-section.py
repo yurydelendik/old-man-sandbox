@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Utility to generate wasm custom section
 """
 
@@ -14,11 +14,12 @@ def parse_args():
   return parser.parse_args()
 
 def encode_number(n):
-  s = ''
+  s = bytearray()
   while n >= 128:
-    s += chr((n & 127) | 128)
+    s.append((n & 127) | 128)
     n >>= 7
-  return s + chr(n)
+  s.append(n)
+  return bytes(s)
 
 def encode_string(s):
   return encode_number(len(s)) + s
@@ -28,16 +29,16 @@ CUSTOM_SECTION_ID = 0
 def main():
   args = parse_args()
 
-  section_name  = encode_string(args.name)
+  section_name  = encode_string(args.name.encode())
   if args.string is None:
-    content = open(args.input, 'r').read()
+    content = open(args.input, 'rb').read()
     if args.size:
       content = encode_number(len(content)) + content
   else:
-    content = encode_number(len(args.string)) + args.string
+    content = encode_string(args.string.encode())
   body = section_name + content
 
-  open('/dev/stdout', 'w').write(encode_number(CUSTOM_SECTION_ID) + encode_number(len(body)) + body)
+  sys.stdout.buffer.write(encode_number(CUSTOM_SECTION_ID) + encode_number(len(body)) + body)
 
 if __name__ == '__main__':
   sys.exit(main())
